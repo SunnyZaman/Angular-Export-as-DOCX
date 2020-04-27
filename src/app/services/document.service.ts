@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Document, Paragraph, TextRun, AlignmentType, HeadingLevel, Table, TableRow, TableCell, WidthType } from "docx";
+import { Document, Paragraph, TextRun, AlignmentType, HeadingLevel, Table, TableRow, TableCell, WidthType, ShadingType, VerticalAlign } from "docx";
 @Injectable({
     providedIn: "root"
 })
@@ -12,7 +12,10 @@ export class DocumentService {
         const title = new Paragraph({
             text: "NBA Players: Leading Scorers",
             alignment: AlignmentType.CENTER,
-            heading: HeadingLevel.TITLE
+            heading: HeadingLevel.TITLE,
+            spacing: {
+                after: 200,
+            },
         });
         const keys = Object.keys(jsonData[0]); //grab an object keys
         const headers = this.getTableHeaders(keys);
@@ -35,7 +38,19 @@ export class DocumentService {
         keys.forEach(key=>{
             cells.push(
                 new TableCell({
-                    children: [new Paragraph(key)]
+                    children: [new Paragraph({ 
+                        children: [new TextRun({
+                            text: key,
+                            bold: true,
+                            color:"ffffff"
+                        })
+                    ]
+                    })
+                    ],
+                    shading: {
+                        fill: "5c5c5c"
+                    },
+                    verticalAlign: VerticalAlign.CENTER
                 })
             )
         }) 
