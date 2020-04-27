@@ -1,2 +1,2 @@
-# Angular-Export-as-Word
-Exporting data as a Word document
+# Angular-Export-as-DOCX
+Export data as a Word document
