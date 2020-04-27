@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Document, Paragraph, TextRun, AlignmentType, HeadingLevel, Table, TableRow, TableCell } from "docx";
+import { Document, Paragraph, TextRun, AlignmentType, HeadingLevel, Table, TableRow, TableCell, WidthType } from "docx";
 @Injectable({
     providedIn: "root"
 })
@@ -17,7 +17,11 @@ export class DocumentService {
         const keys = Object.keys(jsonData[0]); //grab an object keys
         const rows = this.getTableRows(jsonData,keys);
         const table = new Table({
-            rows: rows
+            rows: rows,
+            width: {
+                size: 100,
+                type: WidthType.PERCENTAGE,
+            },
         });
         document.addSection({
             children: [title, table]
