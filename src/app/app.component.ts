@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as jsonData from "src/assets/data";
+import { Packer } from "docx";
 
 @Component({
   selector: 'app-root',
