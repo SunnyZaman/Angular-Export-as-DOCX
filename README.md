@@ -2,7 +2,7 @@
 
 Export data as a Word document
 
-## Usage
+## Packages
 
 ```typescript
 npm i --save docx
