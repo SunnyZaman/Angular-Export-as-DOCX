@@ -15,9 +15,11 @@ export class DocumentService {
             heading: HeadingLevel.TITLE
         });
         const keys = Object.keys(jsonData[0]); //grab an object keys
+        const headers = this.getTableHeaders(keys);
         const rows = this.getTableRows(jsonData,keys);
+        const tableData = [headers, ...rows]
         const table = new Table({
-            rows: rows,
+            rows: tableData,
             width: {
                 size: 100,
                 type: WidthType.PERCENTAGE,
@@ -27,6 +29,20 @@ export class DocumentService {
             children: [title, table]
         });
         return document;
+    }
+    getTableHeaders(keys){
+        let cells = [];
+        keys.forEach(key=>{
+            cells.push(
+                new TableCell({
+                    children: [new Paragraph(key)]
+                })
+            )
+        }) 
+        let headers = new TableRow({
+            children: cells
+        })
+        return headers;
     }
     getTableRows(jsonData,keys){
         let cells = [];
