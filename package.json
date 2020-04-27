@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.0.1",
     "@angular/platform-browser-dynamic": "~9.0.1",
     "@angular/router": "~9.0.1",
+    "@types/file-saver": "^2.0.1",
     "docx": "^5.0.2",
     "file-saver": "^2.0.2",
     "node": "^14.0.0",
